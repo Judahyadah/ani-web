@@ -5,6 +5,12 @@ $shows = $conn->query("SELECT * FROM shows LIMIT 3");
 $shows->execute();
 
 $allShows =$shows->fetchAll(PDO::FETCH_OBJ);
+
+// trending show_source
+$trendingShows =  $conn->query("SELECT shows.id AS id, shows.image AS image, shows.num_available AS num_available, shows.num_total AS num_total, shows.title AS title, shows.genre AS genre, shows.type AS type, COUNT(views.show_id) AS count_views FROM shows JOIN views ON shows.id = views.show_id GROUP BY(shows.id)");
+$trendingShows->execute();
+
+$allTrendingShows = $trendingShows->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 <!-- Hero Section Begin -->
