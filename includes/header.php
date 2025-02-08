@@ -1,6 +1,12 @@
 <?php
 session_start();
-define("APPURL", "http://localhost/trainin/anime-main/")
+define("APPURL", "http://localhost/trainin/anime-main/");
+
+require "config/config.php";
+$categories = $conn->query("SELECT * FROM genre");
+$categories->execute();
+
+$allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
 ?>
 
 
@@ -55,10 +61,11 @@ define("APPURL", "http://localhost/trainin/anime-main/")
                                 <li><a href="<?= APPURL; ?>">Homepage</a></li>
                                 <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="./categories.html">Magic</a></li>
-                                        <li><a href="./categories.html">Adventure</a></li>
-                                        <li><a href="./categories.html">Action</a></li>
-                                        <li><a href="./categories.html">Fantasy</a></li>
+                                        <?php foreach($allCategories as $category) : ?>
+                                        <li><a
+                                                href="<?php echo APPURL; ?>categories.php?name=<?php echo strtolower($category->name); ?>"><?php echo $category->name; ?></a>
+                                        </li>
+                                        <?php endforeach; ?>
                                     </ul>
                                 </li>
                                 <?php if(isset($_SESSION['username'])) : ?>
