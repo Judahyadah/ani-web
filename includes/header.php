@@ -2,7 +2,7 @@
 session_start();
 define("APPURL", "http://localhost/trainin/anime-main/");
 
-require "config/config.php";
+require dirname(dirname(__FILE__)) . "/config/config.php";
 $categories = $conn->query("SELECT * FROM genre");
 $categories->execute();
 
