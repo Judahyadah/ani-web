@@ -72,9 +72,7 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
                                 <li><a href="#"><?php echo $_SESSION['username']; ?> <span
                                             class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="./categories.html">Adventure</a></li>
-                                        <li><a href="./categories.html">Action</a></li>
-                                        <li><a href="./categories.html">Fantasy</a></li>
+                                        <li><a href="<?php echo APPURL ?>users/followings.php">Action</a></li>
                                         <li><a href="<?php echo APPURL; ?>auth/logout.php">Logout</a></li>
                                     </ul>
                                 </li>

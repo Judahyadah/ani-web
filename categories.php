@@ -11,6 +11,10 @@ if(isset($_GET['name'])){
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
     $stmt->execute();
     $allShows = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    $forYouShows =  $conn->query("SELECT shows.id AS id, shows.image AS image, shows.num_available AS num_available, shows.num_total AS num_total, shows.title AS title, shows.genre AS genre, shows.type AS type, COUNT(views.show_id) AS count_views FROM shows JOIN views ON shows.id = views.show_id GROUP BY(shows.id) ORDER BY views.show_id DESC");
+$forYouShows->execute();
+$allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
 }
 ?>
 <!-- Breadcrumb Begin -->
@@ -71,7 +75,7 @@ if(isset($_GET['name'])){
                         </div>
                         <?php endforeach; ?>
                         <?php else :  ?>
-                        <p>no shows in this genre</p>
+                        <p class="text-white">no shows in this genre</p>
                         <?php endif ?>
                     </div>
                 </div>
@@ -86,60 +90,25 @@ if(isset($_GET['name'])){
                 </div>
                 <div class="product__sidebar__comment">
                     <div class="section-title">
-                        <h5>FOR YOU</h5>
+                        <h5>For You</h5>
                     </div>
+                    <?php foreach($allForYouShows as $forYouShow) : ?>
                     <div class="product__sidebar__comment__item">
                         <div class="product__sidebar__comment__item__pic">
-                            <img src="img/sidebar/comment-1.jpg" alt="">
+                            <img src="img/<?php echo $forYouShow->image; ?>" alt="" height="130px" width="90px">
                         </div>
                         <div class="product__sidebar__comment__item__text">
                             <ul>
-                                <li>Active</li>
-                                <li>Movie</li>
+                                <li><?php echo $forYouShow->genre; ?></li>
+                                <li><?php echo $forYouShow->type; ?></li>
                             </ul>
-                            <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                            <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
+                            <h5><a
+                                    href="<?php echo APPURL; ?>anime-details.php?id=<?php echo $forYouShow->id; ?>"><?php echo $forYouShow->title; ?></a>
+                            </h5>
+                            <span><i class="fa fa-eye"></i> <?php echo $forYouShow->count_views; ?> Views</span>
                         </div>
                     </div>
-                    <div class="product__sidebar__comment__item">
-                        <div class="product__sidebar__comment__item__pic">
-                            <img src="img/sidebar/comment-2.jpg" alt="">
-                        </div>
-                        <div class="product__sidebar__comment__item__text">
-                            <ul>
-                                <li>Active</li>
-                                <li>Movie</li>
-                            </ul>
-                            <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                            <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                        </div>
-                    </div>
-                    <div class="product__sidebar__comment__item">
-                        <div class="product__sidebar__comment__item__pic">
-                            <img src="img/sidebar/comment-3.jpg" alt="">
-                        </div>
-                        <div class="product__sidebar__comment__item__text">
-                            <ul>
-                                <li>Active</li>
-                                <li>Movie</li>
-                            </ul>
-                            <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                            <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                        </div>
-                    </div>
-                    <div class="product__sidebar__comment__item">
-                        <div class="product__sidebar__comment__item__pic">
-                            <img src="img/sidebar/comment-4.jpg" alt="">
-                        </div>
-                        <div class="product__sidebar__comment__item__text">
-                            <ul>
-                                <li>Active</li>
-                                <li>Movie</li>
-                            </ul>
-                            <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                            <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                        </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 <?php
 ob_start();
 require "../includes/header.php"; ?>
-<?php require "../config/config.php"; ?>
+<?php  ; ?>
 <?php
     if(isset($_SESSION['username'])){
         header("Location:" . APPURL);
@@ -22,6 +22,7 @@ require "../includes/header.php"; ?>
             if($login->rowCount() > 0){
                 if(password_verify($password, $fetch['password'])){
                     // start session
+                    $_SESSION['user_id'] = $fetch['id'];
                     $_SESSION['username'] = $fetch['username'];
                     $_SESSION['email'] = $fetch['password'];
                     header("Location:" . APPURL);
