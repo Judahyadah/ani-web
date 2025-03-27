@@ -79,7 +79,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg"
-                                    data-setbg="img/trending/<?php echo $trendingShow->image; ?>">
+                                    data-setbg="img/<?php echo $trendingShow->image; ?>">
                                     <div class="ep"><?php echo $trendingShow->num_available; ?> /
                                         <?php echo $trendingShow->num_total; ?></div>
                                     <div class="comment"><i class="fa fa-comments"></i> 11</div>
@@ -119,7 +119,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg"
-                                    data-setbg="img/popular/<?php echo $adventureShow->image; ?>">
+                                    data-setbg="img/<?php echo $adventureShow->image; ?>">
                                     <div class="ep"><?php echo $adventureShow->num_available; ?> /
                                         <?php echo $adventureShow->num_total; ?></div>
                                     <div class="comment"><i class="fa fa-comments"></i> 11</div>
@@ -157,7 +157,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg"
-                                    data-setbg="img/recent/<?php echo $allAdventureShow->image; ?>">
+                                    data-setbg="img/<?php echo $allAdventureShow->image; ?>">
                                     <div class="ep"><?php echo $allAdventureShow->num_available; ?> /
                                         <?php echo $allAdventureShow->num_total; ?></div>
                                     <div class="comment"><i class="fa fa-comments"></i> 11</div>

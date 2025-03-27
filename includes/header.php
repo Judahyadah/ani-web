@@ -72,7 +72,7 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
                                 <li><a href="#"><?php echo $_SESSION['username']; ?> <span
                                             class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
-                                        <li><a href="<?php echo APPURL ?>users/followings.php">Action</a></li>
+                                        <li><a href="<?php echo APPURL ?>users/followings.php">Followings</a></li>
                                         <li><a href="<?php echo APPURL; ?>auth/logout.php">Logout</a></li>
                                     </ul>
                                 </li>
@@ -83,9 +83,16 @@ $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
                 </div>
                 <div class="col-lg-2">
                     <div class="header__right">
-                        <a href="#" class="search-switch"><span class="icon_search"></span></a>
+                        <!-- <a href="#" class="search-switch"><span class="icon_search"></span></a> -->
+
+                        <form action="<?php echo APPURL; ?>search.php" class="form-inline my-2 my-lg-0" method="post">
+                            <input name="keyword" style="margin-left: -150px;" class="form-control mr-sm-2"
+                                type="search" placeholder="Search" aria-label="Search">
+                            <button name="submit" style="background-color: white; color: #46392C;"
+                                class="btn my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                         <?php if(!isset($_SESSION['username'])) : ?>
-                        <a href="<?php echo APPURL; ?>auth/login.php"><span class="icon_profile"></span></a>
+                        <a href=" <?php echo APPURL; ?>auth/login.php"><span class="icon_profile"></span></a>
                         <?php endif; ?>
                     </div>
                 </div>

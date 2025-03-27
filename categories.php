@@ -55,7 +55,7 @@ $allForYouShows = $forYouShows->fetchAll(PDO::FETCH_OBJ);
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg"
-                                    data-setbg="img/trending/<?php echo $show->image; ?>">
+                                    data-setbg="img/<?php echo $show->image; ?>">
                                     <div class="ep"><?php echo $show->num_available; ?> /
                                         <?php echo $show->num_total; ?>
                                     </div>

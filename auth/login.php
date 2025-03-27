@@ -1,7 +1,7 @@
 <?php
-ob_start();
+// ob_start();
 require "../includes/header.php"; ?>
-<?php  ; ?>
+<?php require "../config/config.php"; ?>
 <?php
     if(isset($_SESSION['username'])){
         header("Location:" . APPURL);
@@ -25,7 +25,7 @@ require "../includes/header.php"; ?>
                     $_SESSION['user_id'] = $fetch['id'];
                     $_SESSION['username'] = $fetch['username'];
                     $_SESSION['email'] = $fetch['password'];
-                    header("Location:" . APPURL);
+                    echo ("<script>window.location.assign('".APPURL."')</script>");
                 }else{
                     echo "<script>alert('email or password is wrong')</script>";
                 }
@@ -34,7 +34,7 @@ require "../includes/header.php"; ?>
             }
         }
     }
-ob_end_flush();
+// ob_end_flush();
 ?>
 
 <!-- Normal Breadcrumb Begin -->
@@ -76,7 +76,7 @@ ob_end_flush();
             <div class="col-lg-6">
                 <div class="login__register">
                     <h3>Dont’t Have An Account?</h3>
-                    <a href="signup.html" class="primary-btn">Register Now</a>
+                    <a href="signup.php" class="primary-btn">Register Now</a>
                 </div>
             </div>
         </div>

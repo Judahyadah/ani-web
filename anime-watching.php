@@ -118,7 +118,7 @@ if(isset($_POST['insert_comment'])){
                             <h5>Your Comment</h5>
                         </div>
                         <form method="POST"
-                            action="<?php echo APPURL;?>anime-watching.php?id='<?php echo $id; ?>$ep=<?php echo $ep; ?>'">
+                            action="<?php echo APPURL;?>anime-watching.php?id=<?php echo $id;?>$ep=<?php echo $ep;?>">
                             <textarea name="comment" placeholder=" Your Comment"></textarea>
                             <input type="hidden" name="show_id" value="<?php echo $id; ?>">
                             <button name="insert_comment" type="submit"><i class="fa fa-location-arrow"></i>
